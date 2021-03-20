@@ -1,28 +1,23 @@
-const express = require("express");
+const express = require('express');
+require('dotenv').config();
 const app = express();
-const port = 5000;
-const fruits = require("./data/fruits");
+const port = process.env.PORT || 5000;
 const mongoose = require('mongoose');
+const fruitsRouter = require('./routes/fruits');
 
-mongoose.connect(`mongodb+srv://hyunkyu:<hyunkyu1234>@cluster0.vpbup.mongodb.net/mernfruits?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
-
-const db = mongoose.connection
-db.once('open',()=>console.log('Connected to DB')) 
-
-
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
+mongoose.connect(process.env.DB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-app.get("/fruits", (req, res) => {
-  res.json(fruits);
-});
+const db = mongoose.connection;
+db.once('open', () => console.log('Connected to DB'));
 
-app.get("/fruits/:id", (req, res) => {
-  const fruit = fruits.find((f) => f._id === req.params.id);
-  res.json(fruit);
-});
+//4.16버전이후 이전에는 body-parser
+app.use(express.json());
+
+app.use('/api/fruits', fruitsRouter);
+
 app.listen(port, () => {
   console.log(`Example app ${port}`);
 });

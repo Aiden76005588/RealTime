@@ -1,0 +1,26 @@
+GET http://localhost:5000/api/fruits/
+
+###
+
+POST http://localhost:5000/api/fruits/
+Content-Type: application/json
+
+{
+    "name": "Orange",
+    "amount" : 1,
+    "info" : "Good"
+}
+###
+
+DELETE http://localhost:5000/api/fruits/6055b18bc3cbc4cebbf48c12
+
+###
+
+PUT http://localhost:5000/api/fruits/6055b3dc49a6afd11e07c1d1
+Content-Type: application/json
+
+{
+    "name": "Orange",
+    "amount" :34,
+    "info" : "tset"
+}
