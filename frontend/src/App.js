@@ -11,10 +11,12 @@ function App() {
   return (
     <Router>
       <Header />
-      <Route path="/" exact component={Welcome} />
-      <Route path="/fruitlist" component={FruitList} />
-      <Route path="/addfruit" component={AddFruit} />
-      <Route path="/fruit/:id" componet={EditFruit} />
+      <Container>
+        <Route path="/" exact component={Welcome} />
+        <Route path="/fruitlist" component={FruitList} />
+        <Route path="/addfruit" component={AddFruit} />
+        <Route path="/fruit/:id" componet={EditFruit} />
+      </Container>
     </Router>
   );
 }

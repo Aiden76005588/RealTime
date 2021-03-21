@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const AddFruit = () => {
@@ -9,6 +10,12 @@ const AddFruit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newFruit = {
+      name: fruit.name,
+      amount: fruit.email,
+      info: fruit.info,
+    };
+    axios.post('/api/fruits', newFruit).then((res) => console.log(res));
     console.log(`${fruit.name} = ${fruit.amount} - ${fruit.info}`);
   };
 

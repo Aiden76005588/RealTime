@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const FruitList = () => {
-  const [user, setUser] = useState([]);
+  const [fruits, setFruits] = useState([]);
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
-      .then((response) => response.json())
-      .then((json) => setUser(json));
-  });
+    axios.get('api/fruits').then((response) => setFruits(response.data));
+  }, []);
 
   return (
     <div>
       <h1>List of Fruits</h1>
       {/* 이부분 리스트로 만들면 앞에 생기는 점 없애는 style */}
       <ul style={{ listStyleType: 'none' }}>
-        {/* {user.map((user) => {
-          return <li key={user._id}>{user.name}</li>;
-        })} */}
+        {fruits.map((fruit) => {
+          return (
+            <li key={fruit._id}>
+              <Link to={`/fruit/${fruit._id}`}>{fruit.name}</Link>(
+              {fruit.amount})-{fruit.info}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
