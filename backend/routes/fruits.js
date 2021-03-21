@@ -8,8 +8,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const fruit = fruits.find((f) => f._id === req.params.id);
-  res.json(fruit);
+  Fruit.findById(req.params.id)
+    .then((fruits) => res.json(fruits))
+    .catch((err) => res.json('Error: ' + err));
 });
 
 router.post('/', (req, res) => {

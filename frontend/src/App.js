@@ -15,7 +15,7 @@ function App() {
         <Route path="/" exact component={Welcome} />
         <Route path="/fruitlist" component={FruitList} />
         <Route path="/addfruit" component={AddFruit} />
-        <Route path="/fruit/:id" componet={EditFruit} />
+        <Route path="/fruit/:id" component={EditFruit} />
       </Container>
     </Router>
   );
