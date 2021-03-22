@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 const mongoose = require('mongoose');
 const fruitsRouter = require('./routes/fruits');
 const path = require('path');
@@ -24,6 +24,6 @@ app.get('*', (req, res) =>
   res.send(path.join(__dirname, '../frontend/build/index.html'))
 );
 
-app.listen(port, () => {
-  console.log(`Example app ${port}`);
+app.listen(PORT, () => {
+  console.log(`Example app ${PORT}`);
 });
