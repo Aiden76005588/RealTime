@@ -25,6 +25,7 @@
     "npm": "6.14.10"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "concurrently": "^6.0.0",
     "create-react-app": "^4.0.3",
     "dotenv": "^8.2.0",
